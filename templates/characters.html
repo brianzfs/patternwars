@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+{% set user = current_user() %}
 
 {% block content %}
 
-    <h1> Du hast <span class="bold accent">{{ current_user().characters|length }} </span> Charaktere </h1>
+    <h1> Du hast <span class="bold accent">{{ user.characters|length }} </span> Charaktere </h1>
 
     <div class="character-grid">
-        {% for character in current_user().characters %}
+        {% for character in user.characters %}
             <article class="character-card">
                 <h2 class="character-name">{{ character.name }}</h2>
                 <span class="character-role">{{ character.role }}</span>
