@@ -264,3 +264,47 @@ body {
     margin: 0;
 
 }
+
+
+
+
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    width: min(100%, 700px);
+    justify-content: center;
+}
+
+.character-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc((100% - 16px) / 2);
+}
+
+
+.character-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    background-color: var(--secondary-color);
+}
+
+.character-name {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.character-role {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 50px;
+    background-color: var(--tertiary-color);
+    color: var(--text-muted-color);
+    font-size: 1rem;
+}

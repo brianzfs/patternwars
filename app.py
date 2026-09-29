@@ -5,8 +5,9 @@ app.config["SECRET_KEY"] = "8685255d6d1bf3d2347b77a2edcf84e1ad70b57f4a496b3e549e
 
 
 class Character:
-    def __init__(self, name):
+    def __init__(self, name, role):
         self.name = name
+        self.role = role
 
 class User:
     def __init__(self, username, password, chars,  wins, losses):
@@ -17,9 +18,9 @@ class User:
         self.losses = losses
 
 USERS = {
-    "brian": User("brian", "brian", [Character("A")], 12, 1),
-    "tobi": User("tobi", "tobi", [Character("A")], 8, 4),
-    "loui": User("loui", "loui", [Character("A")], 6, 4),
+    "brian": User("brian", "brian", [Character("Homer Simpson", "Kraftwerk-Mitarbeiter"), Character("Marge Simpson", "Familienmanagerin"), Character("Bart Simpson", "Schulschwänzer"), Character("Lisa Simpson", "Streberin")], 12, 1),
+    "tobi": User("tobi", "tobi", [Character("Ned Flanders", "Nachbar"), Character("Chief Wiggum", "Polizeichef"), Character("Moe Szyslak", "Barbesitzer")], 8, 4),
+    "loui": User("loui", "loui", [Character("Mr. Burns", "Milliardär"), Character("Milhouse Van Houten", "Pechvogel"), Character("Krusty der Clown", "Entertainer"), Character("Ralph Wiggum", "Schüler")], 6, 4),
 }
 
 def current_user():
