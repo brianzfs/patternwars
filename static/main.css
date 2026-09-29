@@ -81,6 +81,14 @@ body {
     color: var(--accent-color);
 }
 
+#nav-container a.active:hover {
+    color: var(--text-color);
+}
+
+#nav-container a.active {
+    background-color: var(--accent-color);
+}
+
 .profile-menu {
     position: relative;
 }
@@ -121,14 +129,69 @@ body {
     box-shadow: 0 4px 14px var(--shadow-color);
 }
 
-.profile-dropdown form {
-    margin: 0;
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: var(--secondary-color);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
 }
 
+form label {
+    font-weight: bold;
+}
+
+form input,
+form select,
+form textarea {
+    padding: 8px;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    outline: none;
+    background-color: var(--tertiary-color);
+    color: var(--text-color);
+    font: inherit;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    border-color: var(--accent-color);
+}
+
+form button {
+    padding: 10px;
+    margin-top: 10px;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--tertiary-color);
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+form button:hover {
+    background-color: var(--accent-color);
+    opacity: 0.9;
+}
+
+.profile-dropdown form {
+    width: auto;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+}
 .profile-dropdown button {
     width: 100%;
     padding: 9px 12px;
     border: 0;
+    margin: 0;
     border-radius: 8px;
     background: transparent;
     color: var(--text-color);
@@ -169,46 +232,10 @@ body {
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
+
+    margin-bottom: 30px;
 }
 
-#login-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 300px;
-    padding: 20px;
-    background-color: var(--secondary-color);
-    border-radius: 10px;
-    border: 2px solid var(--border-color);
-}
-
-#login-form label {
-    font-weight: bold;
-}
-
-#login-form input {
-    padding: 8px;
-    margin-top: 5px;
-    border: none;
-    border-radius: 5px;
-    background-color: var(--tertiary-color);
-    border: 2px solid var(--border-color);
-    outline: none;
-    color: var(--text-color);
-}
-
-#login-form button {
-    padding: 10px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: var(--tertiary-color);
-    border: 2px solid var(--border-color);
-    color: var(--text-color);
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-}
 
 .error-message {
     display: flex;
@@ -218,11 +245,6 @@ body {
     font-size: 18px;
 }
 
-#login-form button:hover {
-    background-color: var(--accent-color);
-    opacity: 0.9;
-}
-
 .bold{
     font-weight: bold;
 }
@@ -230,6 +252,7 @@ body {
 .accent{
     color: var(--accent-color);
 }
+
 
 
 #home-cards {

@@ -78,3 +78,29 @@ def characters():
     if not is_logged_in():
         return redirect(url_for("login"))
     return render_template("characters.html")
+
+
+@app.route("/create-character", methods=["GET"])
+def create_character():
+    if not is_logged_in():
+        return redirect(url_for("login"))
+    return render_template("create-character.html")
+
+
+@app.route("/create-character", methods=["POST"])
+def create_character_post():
+    if not is_logged_in():
+        return redirect(url_for("login"))
+
+    name = request.form.get("name", "")
+    role = request.form.get("role", "")
+
+    if not name or not role:
+        return render_template(
+            "create-character.html",
+            error="Bitte gib einen Namen und eine Rolle ein."
+        )
+
+    current_user().characters.append(Character(name, role))
+    return redirect(url_for("characters"))
+

@@ -1,112 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Pattern Wars</title>
-        <link rel="stylesheet" href="../static/main.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern Wars</title>
+    <link rel="stylesheet" href="../static/main.css">
+</head>
 
-    <body>
+<body>
 
-        <div id="nav-container">
+    <div id="nav-container">
 
-            <h1>Pattern Wars</h1>
+        <h1>Pattern Wars</h1>
 
-            {% if is_logged_in() %}
+        {% if is_logged_in() %}
 
-                <nav>
-                    <a href="/"
-                       class="{% if request.endpoint == 'home' %}active{% endif %}"
-                       title="Home"
-                       aria-label="Home">
+            <nav>
+                <a href="/" class="{% if request.endpoint == 'home' %}active{% endif %}" title="Home" aria-label="Home">
 
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             width="28"
-                             height="28"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="currentColor"
-                             stroke-width="2"
-                             stroke-linecap="round"
-                             stroke-linejoin="round"
-                             class="lucide lucide-house preview-icon">
-                            <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
-                            <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                        </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-house preview-icon">
+                        <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+                        <path
+                            d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    </svg>
 
-                    </a>
+                </a>
 
 
-                    <a href="/characters"
-                       class="{% if request.endpoint == 'characters' %}active{% endif %}"
-                       title="Characters"
-                       aria-label="Characters">
+                <a href="/characters" class="{% if request.endpoint == 'characters' %}active{% endif %}" title="Characters"
+                    aria-label="Characters">
 
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             width="28"
-                             height="28"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="currentColor"
-                             stroke-width="2"
-                             stroke-linecap="round"
-                             stroke-linejoin="round"
-                             class="lucide lucide-sword preview-icon">
-                            <path d="m11 19-6-6" />
-                            <path d="m5 21-2-2" />
-                            <path d="m8 16-4 4" />
-                            <path d="M9.5 17.5 20.414 6.586A2 2 0 0021 5.172V3h-2.172a2 2 0 00-1.414.586L6.5 14.5" />
-                        </svg>
-                        
-                    </a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-sword preview-icon">
+                        <path d="m11 19-6-6" />
+                        <path d="m5 21-2-2" />
+                        <path d="m8 16-4 4" />
+                        <path d="M9.5 17.5 20.414 6.586A2 2 0 0021 5.172V3h-2.172a2 2 0 00-1.414.586L6.5 14.5" />
+                    </svg>
 
-                </nav>
+                </a>
 
-                <details class="profile-menu"
-                         title="Profile"
-                         aria-label="Profile"
-                         role="button">
 
-                    <summary aria-label="Profile Menu">
-                        <img src="{{ url_for('static', filename='profile_picture.png') }}"
-                             alt="Profilbild"
-                             class="profile-picture">
-                    </summary>
+                <a href="/create-character" class="{% if request.endpoint == 'create_character' %}active{% endif %}"
+                    title="Create Character" aria-label="Create Character">
 
-                    <div class="profile-dropdown">
-                        <form action="{{ url_for('logout') }}" method="post">
-                            <button type="submit">Abmelden</button>
-                        </form>
-                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-plus preview-icon">
+                        <path d="M5 12h14" />
+                        <path d="M12 5v14" />
+                    </svg>
 
-                </details>
+                </a>
 
-            {% endif %}
-        </div>
+            </nav>
 
-        <div id="content-container">
-            {% block content %}{% endblock %}
-        </div>
+            <details class="profile-menu" title="Profile" aria-label="Profile" role="button">
 
-        <div id="footer">
+                <summary aria-label="Profile Menu">
+                    <img src="{{ url_for('static', filename='profile_picture.png') }}" alt="Profilbild"
+                        class="profile-picture">
+                </summary>
 
-            <span>Made with</span>
+                <div class="profile-dropdown">
+                    <form action="{{ url_for('logout') }}" method="post">
+                        <button type="submit">Abmelden</button>
+                    </form>
+                </div>
 
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 width="16"
-                 height="16"
-                 viewBox="0 0 24 24"
-                 fill="red"
-                 stroke="red"
-                 stroke-width="2"
-                 stroke-linecap="round"
-                 stroke-linejoin="round"
-                 class="lucide lucide-heart preview-icon">
-                <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" />
-            
-            </svg>by Brian & Tobias
+            </details>
+
+        {% endif %}
+    </div>
+
+    <div id="content-container">
+        {% block content %}{% endblock %}
+    </div>
+
+    <div id="footer">
+
+        <span>Made with</span>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="red" stroke="red"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart preview-icon">
+            <path
+                d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" />
+
+        </svg>by Brian & Tobias
         </p>
 
     </div>
