@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Willkommen, <span class="bold accent">{{ current_user().username }}!</span></h1>
+
+    <div id="home-cards">
+      
+       <div class="card">
+            <h1>{{ current_user().characters|length }}</h1>
+            <h2>Charaktere</h2>
+        </div>
+
+        <div class="card">
+            <h1>{{ current_user().wins + current_user().losses}}</h1>
+            <h2>Fights</h2>
+        </div>
+
+         <div class="card">
+            <h1>{{ current_user().wins }}</h1>
+            <h2>Gewonnen</h2>
+        </div>
+
+         <div class="card">
+            <h1>{{ current_user().losses }}</h1>
+            <h2>Verloren</h2>
+        </div>
+
+    </div>
+
+ 
+
+
+{% endblock %}
