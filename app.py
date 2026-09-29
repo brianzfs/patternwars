@@ -31,8 +31,11 @@ def is_logged_in():
 
 # macht die Funktion is_logged_in und current_user in  Templates verfügbar
 @app.context_processor
-def inject_auth_helpers():
-    return {"is_logged_in": is_logged_in, "current_user": current_user}
+def inject_context():
+    return {
+        "is_logged_in": is_logged_in,
+        "current_user": current_user
+    }
 
 
 @app.route("/")
