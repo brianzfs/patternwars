@@ -4,33 +4,50 @@
 
 {% block content %}
 
-    <h1>Willkommen, <span class="bold accent">{{ user.username }}!</span></h1>
+    <h1>Willkommen, <span class="fw-bold text-primary">{{ user.username }}!</span></h1>
 
-    <div id="home-cards">
-      
-       <div class="card">
-            <h1>{{ user.characters|length }}</h1>
-            <h2>Charaktere</h2>
+    <div class="row justify-content-center w-100">
+        <div class="col-md-10 col-lg-8">
+            <div class="row row-cols-1 row-cols-sm-2 g-3">
+
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <p class="display-1 fw-bold text-center mb-2">{{ user.characters|length }}</p>
+                            <h2 class="fs-5 font-monospace text-end mb-0">Charaktere</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <p class="display-1 fw-bold text-center mb-2">{{ user.wins + user.losses }}</p>
+                            <h2 class="fs-5 font-monospace text-end mb-0">Fights</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <p class="display-1 fw-bold text-center mb-2">{{ user.wins }}</p>
+                            <h2 class="fs-5 font-monospace text-end mb-0">Gewonnen</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <p class="display-1 fw-bold text-center mb-2">{{ user.losses }}</p>
+                            <h2 class="fs-5 font-monospace text-end mb-0">Verloren</h2>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-
-        <div class="card">
-            <h1>{{ user.wins + user.losses}}</h1>
-            <h2>Fights</h2>
-        </div>
-
-         <div class="card">
-            <h1>{{ user.wins }}</h1>
-            <h2>Gewonnen</h2>
-        </div>
-
-         <div class="card">
-            <h1>{{ user.losses }}</h1>
-            <h2>Verloren</h2>
-        </div>
-
     </div>
-
- 
-
 
 {% endblock %}

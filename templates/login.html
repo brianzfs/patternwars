@@ -2,36 +2,46 @@
 
 {% block content %}
 
-    <form id="login-form" action="{{ url_for('login') }}" method="post">
+    <div class="row justify-content-center w-100">
+        <div class="col-sm-8 col-md-6 col-lg-4">
 
-        {% if error %}
-            <div class="error-message">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     width="64"
-                     height="64"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="2"
-                     stroke-linecap="round"
-                     stroke-linejoin="round"
-                     class="lucide lucide-triangle-alert preview-icon">
-                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
-                    <path d="M12 9v4" />
-                    <path d="M12 17h.01" />
-                </svg>
-                <p>{{ error }}</p>
-            </div>
-        {% endif %}
+            <form id="login-form" class="card card-body gap-2" action="{{ url_for('login') }}" method="post">
 
-        <label for="username">Username</label>
-        <input type="text" id="username" autocomplete="off" name="username" required>
+                {% if error %}
+                    <div class="alert alert-danger d-flex flex-column align-items-center text-center mb-0" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             width="48"
+                             height="48"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="2"
+                             stroke-linecap="round"
+                             stroke-linejoin="round"
+                             class="lucide lucide-triangle-alert preview-icon mb-2">
+                            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+                            <path d="M12 9v4" />
+                            <path d="M12 17h.01" />
+                        </svg>
+                        <span>{{ error }}</span>
+                    </div>
+                {% endif %}
 
-        <label for="password">Passwort</label>
-        <input type="password" id="password" name="password" required>
+                <div>
+                    <label for="username" class="form-label fw-bold">Username</label>
+                    <input type="text" id="username" autocomplete="off" name="username" class="form-control" required>
+                </div>
 
-        <button type="submit">Login</button>
+                <div>
+                    <label for="password" class="form-label fw-bold">Passwort</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
 
-    </form>
+                <button type="submit" class="btn btn-primary fw-bold mt-2">Login</button>
+
+            </form>
+
+        </div>
+    </div>
 
 {% endblock %}

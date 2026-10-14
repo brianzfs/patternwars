@@ -4,14 +4,29 @@
 
     <h1>Charakter erstellen</h1>
 
-    <form id="character-form" action="{{ url_for('create_character') }}" method="post">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required>
+    <div class="row justify-content-center w-100">
+        <div class="col-sm-8 col-md-6 col-lg-4">
 
-        <label for="role">Rolle</label>
-        <input type="text" id="role" name="role" required>
+            <form id="character-form" class="card card-body gap-2" action="{{ url_for('create_character') }}" method="post">
 
-        <button type="submit">Erstellen</button>
-    </form>
+                {% if error %}
+                    <div class="alert alert-danger mb-0" role="alert">{{ error }}</div>
+                {% endif %}
+
+                <div>
+                    <label for="name" class="form-label fw-bold">Name</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+
+                <div>
+                    <label for="role" class="form-label fw-bold">Rolle</label>
+                    <input type="text" id="role" name="role" class="form-control" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary fw-bold mt-2">Erstellen</button>
+            </form>
+
+        </div>
+    </div>
 
 {% endblock %}
