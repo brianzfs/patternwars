@@ -2,16 +2,38 @@
 
 {% block content %}
 
-    <h1>Charakter erstellen</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
 
-    <form id="character-form" action="{{ url_for('create_character') }}" method="post">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required>
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="h5 mb-0">Charakter erstellen</h1>
+                </div>
+                <div class="card-body">
 
-        <label for="role">Rolle</label>
-        <input type="text" id="role" name="role" required>
+                    {% if error %}
+                        <div class="alert alert-danger" role="alert">{{ error }}</div>
+                    {% endif %}
 
-        <button type="submit">Erstellen</button>
-    </form>
+                    <form id="character-form" action="{{ url_for('create_character') }}" method="post">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="role" class="form-label">Rolle</label>
+                            <input type="text" id="role" name="role" class="form-control" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Erstellen</button>
+                        <a href="{{ url_for('characters') }}" class="btn btn-secondary">Abbrechen</a>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 {% endblock %}
