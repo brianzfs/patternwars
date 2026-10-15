@@ -3,17 +3,37 @@
 
 {% block content %}
 
-    <h1> Du hast <span class="bold accent">{{ user.characters|length }} </span> Charaktere </h1>
-
-    <div class="character-grid">
-        {% for character in user.characters %}
-            <article class="character-card">
-                <h2 class="character-name">{{ character.name }}</h2>
-                <span class="character-role">{{ character.role }}</span>
-            </article>
-        {% else %}
-            <p>Du hast noch keine Charaktere.</p>
-        {% endfor %}
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="mb-0">Charaktere <span class="badge text-bg-secondary">{{ user.characters|length }}</span></h1>
+        <a href="{{ url_for('create_character') }}" class="btn btn-primary">Neuer Charakter</a>
     </div>
+
+    {% if user.characters %}
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Rolle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for character in user.characters %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <td>{{ character.name }}</td>
+                            <td>{{ character.role }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="alert alert-info" role="alert">
+            Du hast noch keine Charaktere.
+            <a href="{{ url_for('create_character') }}" class="alert-link">Erstelle jetzt deinen ersten.</a>
+        </div>
+    {% endif %}
 
 {% endblock %}

@@ -73,6 +73,13 @@ def logout():
     return redirect(url_for("login"))
 
 
+@app.route("/theme", methods=["POST"])
+def change_theme():
+    session["theme"] = request.form.get("theme", "system")
+    session.permanent = True
+    return redirect(request.referrer or url_for("home"))
+
+
 @app.route("/characters")
 def characters():
     if not is_logged_in():
