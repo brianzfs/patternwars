@@ -10,6 +10,9 @@ class Character:
         self.name = name
         self.role = role
 
+    def __repr__(self):
+        return f"Character({self.name!r}, {self.role!r})"
+
 class User:
     def __init__(self, username, password, chars,  wins, losses):
         self.username = username
