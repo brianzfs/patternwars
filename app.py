@@ -128,3 +128,8 @@ def create_character_post():
 @app.route("/health")
 def health():
     return {"status": "ok"}
+
+
+@app.errorhandler(404)
+def not_found(_error):
+    return redirect(url_for("home"))
