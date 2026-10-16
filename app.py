@@ -1,7 +1,8 @@
+import os
 from flask import Flask, render_template, request, session, redirect, url_for
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "8685255d6d1bf3d2347b77a2edcf84e1ad70b57f4a496b3e549e4fc5fd3cd0e2"
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-only-change-me")
 
 
 class Character:
