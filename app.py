@@ -1,13 +1,17 @@
+import os
 from flask import Flask, render_template, request, session, redirect, url_for
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "8685255d6d1bf3d2347b77a2edcf84e1ad70b57f4a496b3e549e4fc5fd3cd0e2"
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-only-change-me")
 
 
 class Character:
     def __init__(self, name, role):
         self.name = name
         self.role = role
+
+    def __repr__(self):
+        return f"Character({self.name!r}, {self.role!r})"
 
 class User:
     def __init__(self, username, password, chars,  wins, losses):
@@ -16,6 +20,14 @@ class User:
         self.characters = chars
         self.wins = wins
         self.losses = losses
+
+    @property
+    def games(self):
+        return self.wins + self.losses
+
+    @property
+    def win_rate(self):
+        return self.wins / self.games if self.games else 0.0
 
 USERS = {
     "brian": User("brian", "brian", [Character("Homer Simpson", "Kraftwerk-Mitarbeiter"), Character("Marge Simpson", "Familienmanagerin"), Character("Bart Simpson", "Schulschwänzer"), Character("Lisa Simpson", "Streberin")], 12, 1),
@@ -111,3 +123,13 @@ def create_character_post():
     current_user().characters.append(Character(name, role))
     return redirect(url_for("characters"))
 
+
+
+@app.route("/health")
+def health():
+    return {"status": "ok"}
+
+
+@app.errorhandler(404)
+def not_found(_error):
+    return redirect(url_for("home"))
