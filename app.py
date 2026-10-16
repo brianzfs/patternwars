@@ -123,3 +123,8 @@ def create_character_post():
     current_user().characters.append(Character(name, role))
     return redirect(url_for("characters"))
 
+
+
+@app.route("/health")
+def health():
+    return {"status": "ok"}
