@@ -21,6 +21,14 @@ class User:
         self.wins = wins
         self.losses = losses
 
+    @property
+    def games(self):
+        return self.wins + self.losses
+
+    @property
+    def win_rate(self):
+        return self.wins / self.games if self.games else 0.0
+
 USERS = {
     "brian": User("brian", "brian", [Character("Homer Simpson", "Kraftwerk-Mitarbeiter"), Character("Marge Simpson", "Familienmanagerin"), Character("Bart Simpson", "Schulschwänzer"), Character("Lisa Simpson", "Streberin")], 12, 1),
     "tobi": User("tobi", "tobi", [Character("Ned Flanders", "Nachbar"), Character("Chief Wiggum", "Polizeichef"), Character("Moe Szyslak", "Barbesitzer")], 8, 4),
